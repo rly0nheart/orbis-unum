@@ -5,10 +5,9 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 include = [
     { path = "orbis/templates/map.html" },
-    { path = "orbis/templates/index.html" },
-    { path = "orbis/data/settings.json" }
+    { path = "orbis/templates/index.html" }
 ]
-name = "orbis"
+name = "orbis-unum"
 version = "1.0.0"
 description = "🌍 IP Geolocator & Coordinate Mapper 📍"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
