@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>🗺️ {{ current_user }}@orbis - {{ map_name }}</title>
+
+    <!-- Include the Leaflet CSS library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      html, body, #map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Create a div where the map will be placed -->
+    <div id="map"></div>
+
+    <!-- Include the Leaflet JavaScript library -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+    // Create a popup
+    var popup = L.popup();
+
+    // Initialize the map and set its initial view to coordinates [0, 0] at zoom level 2
+    var map = L.map('map').setView([0, 0], 2);
+
+    // Add a tile layer to the map using OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Iterate over the list of location data and create a marker for each location
+{% for data in map_data %}
+    L.marker([{{ data.location.lat }}, {{ data.location.lon }}])
+        .bindPopup('<i>{{ data.location.display_name }}</i>' +
+                   '<br><b>🛰️ Earth:</b> <a href="https://earth.google.com/web/@{{ data.location.lat }},{{ data.location.lon }},89.06331136a,12094.0505788d,1y,1.97597436h,60t,-0r/data=KAI" target="_blank">View</a>' +
+                   '<br><b>🏞️ Images:</b> <a href="https://google.com/search?tbm=isch&q={{ data.location.display_name }}" target="_blank">Show</a>' +
+                   '<br><b>🪟 Street View:</b> <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{ data.location.lat }},{{ data.location.lon }}" target="_blank">View</a>' +
+                   '{% if data.ip_address %}<br><b>🖥️ IP Address:</b> {{ data.ip_address }}{% endif %}' +
+                   '<br><b>🌐 Latitude:</b> {{ data.location.lat }}' +
+                   '<br><b>🌐 Longitude:</b> {{ data.location.lon }}')
+        .addTo(map)
+        .openPopup();
+{% endfor %}
+
+    // Function to handle clicks on the map
+    function onMapClick(e) {
+      popup
+      .setLatLng(e.latlng)
+      .setContent("🖱️ You clicked the map at " + e.latlng.toString())
+      .openOn(map);
+    }
+
+    // Add a click event listener to the map
+    map.on('click', onMapClick);
+    </script>
+  </body>
+</html>

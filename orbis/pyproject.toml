@@ -1,0 +1,36 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+include = [
+    { path = "orbis/templates/map.html" },
+    { path = "orbis/templates/index.html" },
+    { path = "orbis/data/settings.json" }
+]
+name = "orbis"
+version = "1.0.0"
+description = "A cross-platform geolocation & reverse geolocation tool."
+authors = ["Richard Mwewa <rly0nheart@duck.com>"]
+readme = "README.md"
+license = "BSD-3-Clause"
+homepage = "https://github.com/rly0nheart/orbis-unum"
+repository = "https://github.com/rly0nheart/orbis-unum"
+keywords = ["mapping", "geolocation", "reverse-geolocation"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rich = "*"
+jinja2 = "*"
+flask = "*"
+
+[tool.poetry.scripts]
+orbis = "orbis.main:orbis"
+orbis-cli = "orbis.main:cli"
+orbis-web = "orbis.main:web"

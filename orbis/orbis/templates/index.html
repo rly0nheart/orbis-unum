@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Orbis Unum</title>
+        <style>
+            .light-theme {
+                background-color: white;
+                color: black;
+            }
+            .dark-theme {
+                background-color: black;
+                color: white;
+            }
+            .light-theme textarea, .light-theme footer {
+                background-color: white;
+                color: black;
+            }
+            .dark-theme textarea, .dark-theme footer {
+                background-color: black;
+                color: white;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            textarea {
+                border-radius: 5px;
+                max-width: 100%;
+                max-height: 550px;
+                resize: vertical;
+            }
+            .main-content {
+                margin-top: 50px;  /* Move main content down */
+            }
+            .form-container {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                min-height: calc(100vh - 200px);
+            }
+            form {
+                text-align: center;
+                display: block;
+                width: 80%;
+                margin: auto;
+            }
+            #theme-button {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+            footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+            @media screen and (max-width: 600px) {
+                form {
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body class="light-theme">
+        <button id="theme-button">🌙 Switch to Dark Mode</button>
+        <div class="main-content">
+            <h1>🌍 Orbis Unum: Web Instance</h1>
+            <div class="form-container">
+                <form method="POST">
+                    Coordinates<br>
+                    <textarea name="coordinates" rows="0" cols="46" placeholder="latitude,longitude"></textarea><br>
+                    <button type="submit">🗺️ Show Map</button>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; {{ current_year }} {{ current_user }}. All Rights Reserved.</p>
+        </footer>
+        <script>
+            var error = "{{ error }}";
+            if (error && error !== "None") {
+                alert(error);
+            }
+            if (localStorage.getItem('theme')) {
+                var theme = localStorage.getItem('theme');
+                document.body.className = theme;
+                var themeButton = document.getElementById('theme-button');
+                if (theme === 'light-theme') {
+                    themeButton.innerHTML = '🌙 Switch to Dark Mode';
+                } else {
+                    themeButton.innerHTML = '☀️ Switch to Light Mode';
+                }
+            }
+            document.getElementById('theme-button').addEventListener('click', function() {
+                var body = document.body;
+                if (body.classList.contains('light-theme')) {
+                    body.classList.remove('light-theme');
+                    body.classList.add('dark-theme');
+                    this.innerHTML = '☀️ Switch to Light Mode';
+                    localStorage.setItem('theme', 'dark-theme');
+                } else {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                    this.innerHTML = '🌙 Switch to Dark Mode';
+                    localStorage.setItem('theme', 'light-theme');
+                }
+            });
+        </script>
+    </body>
+</html>
