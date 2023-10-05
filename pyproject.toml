@@ -31,5 +31,5 @@ flask = "*"
 
 [tool.poetry.scripts]
 orbis = "orbis.main:orbis"
-orbis-cli = "orbis.main:cli"
-orbis-web = "orbis.main:web"
+orbis-cli = "orbis-unum.main:cli"
+orbis-web = "orbis-unum.main:web"
