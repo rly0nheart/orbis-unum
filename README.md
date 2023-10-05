@@ -1,5 +1,4 @@
-# orbis-unum
-**Orbis Unum** is a cross-platform geolocation tool that transforms raw IP addresses and geographical coordinates into interactive visualizations on a map. With its intuitive interface, users can effortlessly navigate whether they're operating from the command line or using its web-based instance.
+**Orbis Unum** is a cross-platform geolocation tool that transforms raw *IP addresses* and *geographical coordinates* into interactive visualizations on a map. With its intuitive interface, users can effortlessly navigate whether they're operating from the command line or using its web-based instance.
 
 ## 🔍 What Does Orbis Unum Offer?
 ### CLI Toolset
