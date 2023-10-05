@@ -48,10 +48,9 @@ def cli():
     if args.ip is not None:
         # Create the directory where generated maps will be stored.
         path_finder(["orbis-maps"])
-        
-        created_map = create_map(
-            map_data=get_location_data_list(ip_address=args.ip), map_name=args.output
-        )
+
+        map_data = get_location_data_list(ip_address=args.ip)
+        created_map = create_map(map_data=map_data, map_name=args.output)
         
         log.info(message.opening_map(created_map))
         webbrowser.open(created_map)
@@ -61,8 +60,8 @@ def cli():
 
 def web():
     """
-    The web variant of Orbis.
+    The web variant of Orbis Unum.
     """
     # Start the Flask app
-    log.info("Starting Flask app at http://localhost:5000/index")
+    log.info("Hosting Flask app at http://localhost:5000/index")
     app.run(debug=args.debug)
