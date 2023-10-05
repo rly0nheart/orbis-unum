@@ -116,7 +116,7 @@ def format_map_name(map_name: str) -> str:
 def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=f"Orbis Unum" f" — by {__author__}" f" ({__about__})",
-        epilog="A cross-platform geolocation & reverse geolocation tool",
+        epilog="🌍 IP Geolocator & Coordinate Mapper 📍",
     )
     parser.add_argument("-i", "--ip", help="ip address or file containing ip addresses")
     parser.add_argument(
