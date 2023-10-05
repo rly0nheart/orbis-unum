@@ -1,7 +1,7 @@
 **Orbis Unum** is a cross-platform geolocation tool that transforms raw *IP addresses* and *geographical coordinates* into interactive visualizations on a map. With its intuitive interface, users can effortlessly navigate whether they're operating from the command line or using its web-based instance.
 
 ## 🔍 What Does Orbis Unum Offer?
-### CLI Toolset
+### Command Line Interface
 - [x] Accepts either a standalone IP or a file loaded with multiple IP addresses.
 - [x] Generates an interactive OpenStreetMap with pinpoint accuracy for each IP's location.
 #### On selecting any pin, you uncover:
