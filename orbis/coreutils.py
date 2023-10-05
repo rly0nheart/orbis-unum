@@ -33,25 +33,21 @@ def send_request(endpoint) -> dict:
         logging.error(message.an_error_occurred(error=str(error)))
 
 
-# Check program updates
-def check_updates() -> None:
+def check_updates():
     """
     Checks for latest updates by retrieving the release tag from the releases page of the program from GitHub
     Then compares the remote version tag with the tag in the program.
     If they match, program assumes it's up-to-date.
     If not, print a message notifying the user about the remote version (which is treated as the official new release)
     , and lastly prints the release notes of the presumed new release.
-
-    :return: None
     """
     release_data = send_request(
-        "https://api.github.com/repos/rly0nheart/ipmap/releases/latest"
+        "https://api.github.com/repos/rly0nheart/orbis-unum/releases/latest"
     )
 
     remote_version = release_data.get("tag_name")
     if remote_version != __version__:
-        raw_release_notes = release_data["body"]
-        markdown_release_notes = Markdown(raw_release_notes)
+        markdown_release_notes = Markdown(release_data.get("body"))
         log.info(f"Orbis Unum {remote_version} is available.\n")
         print(markdown_release_notes)
     else:
