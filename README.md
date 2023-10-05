@@ -1,6 +1,6 @@
 **Orbis Unum** is a cross-platform geolocation tool that transforms raw *IP addresses* and *geographical coordinates* into interactive visualizations on a map. With its intuitive interface, users can effortlessly navigate whether they're operating from the command line or using its web-based instance.
 
-![Python](https://img.shields.io/badge/Python-14354C?style=flat&logo=python) ![html](https://img.shields.io/badge/HTML-orange?style=flat&logo=html5&logoColor=white) ![flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask) [![Upload Python Package](https://github.com/rly0nheart/orbis-unum/actions/workflows/python-publish.yml/badge.svg)](https://github.com/rly0nheart/orbis-unum/actions/workflows/python-publish.yml)
+![Python](https://img.shields.io/badge/Python-14354C?style=flat&logo=python) ![html](https://img.shields.io/badge/HTML-orange?style=flat&logo=html5&logoColor=white) ![flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask) [![Upload Python Package](https://github.com/rly0nheart/orbis-unum/actions/workflows/python-publish.yml/badge.svg)](https://github.com/rly0nheart/orbis-unum/actions/workflows/python-publish.yml) [![CodeQL](https://github.com/rly0nheart/orbis-unum/actions/workflows/codeql.yml/badge.svg)](https://github.com/rly0nheart/orbis-unum/actions/workflows/codeql.yml)
 
 ## 🔍 What Does Orbis Unum Offer?
 ### Command Line Interface
