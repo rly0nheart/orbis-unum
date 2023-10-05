@@ -84,9 +84,11 @@ options:
 🌍 IP Geolocator & Coordinate Mapper 📍 
 ```
 ***
-![python-powered](https://github.com/rly0nheart/orbis-unum/assets/74001397/679d6e0f-813b-45aa-bf70-b3f1fa472632)
+![python-powered](https://github.com/rly0nheart/orbis-unum/assets/74001397/c2d2d150-d8e7-4748-bd97-0ca62685fa91)
+
 <a href="https://www.buymeacoffee.com/_rly0nheart"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=_rly0nheart&button_colour=40DCA5&font_colour=ffffff&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
-![me](https://github.com/rly0nheart/orbis-unum/assets/74001397/1b732a1a-ca46-4d1c-b9af-3d6c744cd366)
+![me](https://github.com/rly0nheart/orbis-unum/assets/74001397/885e8710-8756-43c8-b63e-109b55af2b37)
+
 
 
