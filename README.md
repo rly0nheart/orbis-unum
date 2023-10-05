@@ -8,9 +8,10 @@
 #### On selecting any pin, you uncover:
  - [x] Vital IP metadata.
  - [x] Seamless links to:
-         - Google Earth for a top-down view or the location.
-         - Google Maps Street View for a closer look at the surroundings of the location.
-         - Google Image Search to view images of the location and its surroundings.
+
+    * Google Earth for a top-down view or the location.
+    * Google Maps Street View for a closer look at the surroundings of the location.
+    * Google Image Search to view images of the location and its surroundings.
 
 ### Web Interface:
 - [x] Accepts individual or bulk pairs of coordinates.
