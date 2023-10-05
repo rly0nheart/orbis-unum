@@ -10,7 +10,7 @@ include = [
 ]
 name = "orbis"
 version = "1.0.0"
-description = "A cross-platform geolocation & reverse geolocation tool."
+description = "🌍 IP Geolocator & Coordinate Mapper 📍"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 readme = "README.md"
 license = "BSD-3-Clause"
