@@ -15,3 +15,51 @@
 ### Web Interface:
 - [x] Accepts individual or bulk pairs of coordinates.
 - [x] Mirrors the CLI's functionality, providing an immersive mapping experience.
+
+# Installation
+**Orbis Unum** can be installed from PyPI with the following command
+```
+pip install orbis-unum
+```
+
+# Usage
+Run thefollowing command to see example usages of the program
+```
+orbis
+```
+
+The output will look like the following
+```
+    orbis-cli/orbis-web
+
+    CLI
+    ===
+       Use 'orbis-cli' command to start the command-line interface variant of Orbis Unum. 
+       In CLI mode, you should provide an IP Address or a file containing IP Addresses as an argument. 
+       Orbis will fetch the geolocation information for the given IP Address(es) and display it on a map.
+
+
+    Example
+    -------
+    orbis-cli --ip 8.8.8.8/orbis-cli ips.txt
+
+
+
+    WEB
+    ===
+       Use 'orbis-web' command to start the web variant of Orbis Unum.
+       In WEB mode, you will be presented with a 
+       form where you can input geographical coordinates (latitude and longitude).
+       After submitting the form, Orbis will fetch the geolocation information for the 
+       given coordinates and display it on a map.
+
+
+    Example
+    -------
+    orbis-web
+
+    Note: The web interface will be accessible at 'http://localhost:5000/index' after you run the 'orbis-web' command.
+```
+***
+![me](https://github.com/rly0nheart/orbis-unum/assets/74001397/1b732a1a-ca46-4d1c-b9af-3d6c744cd366)
+
