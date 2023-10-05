@@ -23,12 +23,12 @@ pip install orbis-unum
 ```
 
 # Usage
-Run thefollowing command to see example usages of the program
+Run the following command to see example usages of the program
 ```
 orbis
 ```
 
-The output will look like the following
+The output should look like the following
 ```
     orbis-cli/orbis-web
 
@@ -59,6 +59,27 @@ The output will look like the following
     orbis-web
 
     Note: The web interface will be accessible at 'http://localhost:5000/index' after you run the 'orbis-web' command.
+```
+
+Run the following command to see the usage of the command-line instance of Orbis Unum
+```
+orbis-cli --help
+```
+The output should look like the following
+```
+usage: orbis-cli [-h] [-i IP] [-o OUTPUT] [-d] [-v]
+
+Orbis Unum — by Richard Mwewa (https://about.me/rly0nheart)
+
+options:
+  -h, --help            show this help message and exit
+  -i IP, --ip IP        ip address or file containing ip addresses
+  -o OUTPUT, --output OUTPUT
+                        map output name (default orbis)
+  -d, --debug           run orbis-cli in debug mode
+  -v, --version         show program's version number and exit
+
+🌍 IP Geolocator & Coordinate Mapper 📍 
 ```
 ***
 ![python-powered](https://github.com/rly0nheart/orbis-unum/assets/74001397/679d6e0f-813b-45aa-bf70-b3f1fa472632)
