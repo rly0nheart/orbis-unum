@@ -1,6 +1,6 @@
 import webbrowser
 
-from .coreutils import args, log, path_finder
+from .coreutils import args, log, path_finder, check_updates
 from .orbis import message, app, create_map, get_location_data_list
 
 
@@ -49,6 +49,7 @@ def cli():
         # Create the directory where generated maps will be stored.
         path_finder(["orbis-maps"])
 
+        check_updates()
         map_data = get_location_data_list(ip_address=args.ip)
         created_map = create_map(map_data=map_data, map_name=args.output)
         
@@ -62,6 +63,8 @@ def web():
     """
     The web variant of Orbis Unum.
     """
+    check_updates()
+    
     # Start the Flask app
     log.info("Hosting Flask app at http://localhost:5000/index")
     app.run(debug=args.debug)
