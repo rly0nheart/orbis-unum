@@ -30,6 +30,6 @@ jinja2 = "*"
 flask = "*"
 
 [tool.poetry.scripts]
-orbis = "orbis.main:orbis"
-orbis-cli = "orbis-unum.main:cli"
-orbis-web = "orbis-unum.main:web"
+orbis = "orbis_unum.main:orbis"
+orbis-cli = "orbis_unum.main:cli"
+orbis-web = "orbis_unum.main:web"
