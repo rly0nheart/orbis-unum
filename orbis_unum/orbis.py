@@ -192,7 +192,9 @@ def create_map(map_data: list, map_name: str) -> str:
     )
 
     with open(
-        os.path.join(maps_directory, f"{format_map_name(map_name)}.html"), "w"
+        os.path.join(maps_directory, f"{format_map_name(map_name)}.html"),
+        "w",
+        encoding="utf-8",
     ) as created_map:
         created_map.write(rendered_map)
 
