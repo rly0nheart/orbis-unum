@@ -26,7 +26,7 @@ location_data = []
 
 
 @app.route("/index", methods=["GET", "POST"])
-def input_coordinates():
+async def input_coordinates():
     """
     The route for inputting coordinates in the web variant of Orbis.
     It either renders a form for inputting coordinates or processes
@@ -51,7 +51,7 @@ def input_coordinates():
             # key (with the location data) and an 'ip_address' key (with a None value as IP address is not available)
             location_data[:] = [
                 {
-                    "location": get_reverse_geolocation_data(coordinates),
+                    "location": await get_reverse_geolocation_data(coordinates),
                     "ip_address": None,
                 }
                 for coordinates in coordinates_list
@@ -105,7 +105,7 @@ def process_user_input(user_input: str) -> list:
         return [user_input]
 
 
-def get_reverse_geolocation_data(coordinates: tuple) -> dict:
+async def get_reverse_geolocation_data(coordinates: tuple) -> dict:
     """
     Gets location data from the given coordinates.
 
@@ -119,14 +119,15 @@ def get_reverse_geolocation_data(coordinates: tuple) -> dict:
             target=coordinates,
         )
     )
-    coordinates_location_data = send_request(
+    coordinates_location_data = await send_request(
         f"https://nominatim.openstreetmap.org/reverse?lat={coordinates[0]}&"
         f"lon={coordinates[1]}&format=json&addressdetails=1"
     )
+
     return coordinates_location_data
 
 
-def get_geolocation_data(ip_address: str) -> tuple:
+async def get_geolocation_data(ip_address: str) -> tuple:
     """
     Gets geolocation data from the given ip address.
 
@@ -139,11 +140,15 @@ def get_geolocation_data(ip_address: str) -> tuple:
             request_type="geolocation", target_title="IP", target=ip_address
         )
     )
-    ip_coordinates = send_request(f"http://ip-api.com/json/{ip_address}")
-    return ip_coordinates["query"], ip_coordinates["lat"], ip_coordinates["lon"]
+    ip_coordinates = await send_request(f"http://ip-api.com/json/{ip_address}")
+    return (
+        ip_coordinates.get("query"),
+        ip_coordinates.get("lat"),
+        ip_coordinates.get("lon"),
+    )
 
 
-def get_location_data_list(ip_address: str) -> list:
+async def get_location_data_list(ip_address: str) -> list:
     """
     Given an IP address, this function returns a list of location data, the IP address itself, and the corresponding
     first coordinate for each IP address.
@@ -154,11 +159,13 @@ def get_location_data_list(ip_address: str) -> list:
     """
     data_list = []
     ip_addresses = process_user_input(user_input=ip_address)
-    coordinates_list = [get_geolocation_data(ip) for ip in ip_addresses]
+    coordinates_list = [await get_geolocation_data(ip) for ip in ip_addresses]
 
     for coordinates in coordinates_list:
         data = {
-            "location": get_reverse_geolocation_data((coordinates[1], coordinates[2])),
+            "location": await get_reverse_geolocation_data(
+                (coordinates[1], coordinates[2])
+            ),
             "ip_address": coordinates[0],
         }
         data_list.append(data)
