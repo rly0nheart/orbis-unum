@@ -1,3 +1,4 @@
+import asyncio
 import os
 from datetime import datetime
 
@@ -26,7 +27,7 @@ location_data = []
 
 
 @app.route("/index", methods=["GET", "POST"])
-async def input_coordinates():
+def input_coordinates():
     """
     The route for inputting coordinates in the web variant of Orbis.
     It either renders a form for inputting coordinates or processes
@@ -51,7 +52,7 @@ async def input_coordinates():
             # key (with the location data) and an 'ip_address' key (with a None value as IP address is not available)
             location_data[:] = [
                 {
-                    "location": await get_reverse_geolocation_data(coordinates),
+                    "location": asyncio.run(get_reverse_geolocation_data(coordinates)),
                     "ip_address": None,
                 }
                 for coordinates in coordinates_list
