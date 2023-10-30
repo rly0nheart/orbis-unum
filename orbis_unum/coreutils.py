@@ -4,36 +4,40 @@ import logging
 import os
 import subprocess
 from datetime import datetime
+from typing import Optional, Union
 
-import requests
+import aiohttp
 from rich import print
 from rich.logging import RichHandler
 from rich.markdown import Markdown
+from rich_argparse import RichHelpFormatter
 
-from . import __version__, __author__, __about__
-from .messages import Messages
-
-message = Messages()
+from . import __description__, __epilog__, __version__
 
 
-def send_request(endpoint) -> dict:
+async def send_request(endpoint: str) -> Optional[Union[dict, list, None]]:
     """
-    Sends a GET request to the specified endpoint and returns JSON
+    Asynchronously sends a GET request to a specified API endpoint and returns the JSON data from it.
 
-    :param endpoint: url endpoint to send request to
-    :return: Dictionary response (JSON)
+    :param endpoint: The API endpoint to send the request to.
+    :return: Returns JSON data as a dictionary or list. Returns None if fetching fails.
     """
     try:
-        with requests.get(endpoint) as response:
-            response_data = response.json()
-        return response_data
-    except KeyboardInterrupt:
-        logging.warning("User interruption detected (Ctrl+C).")
+        async with aiohttp.ClientSession() as session:
+            async with session.get(endpoint) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    return data
+                else:
+                    error_message = await response.json()
+                    log.error(f"An api error occurred: {error_message}")
+    except aiohttp.ClientError as error:
+        log.error(f"An http error occurred: {error}")
     except Exception as error:
-        logging.error(message.an_error_occurred(error=str(error)))
+        log.critical(f"An unknown error occurred: {error}")
 
 
-def check_updates():
+async def check_updates():
     """
     Checks for latest updates by retrieving the release tag from the releases page of the program from GitHub
     Then compares the remote version tag with the tag in the program.
@@ -41,17 +45,18 @@ def check_updates():
     If not, print a message notifying the user about the remote version (which is treated as the official new release)
     , and lastly prints the release notes of the presumed new release.
     """
-    release_data = send_request(
+    release_data = await send_request(
         "https://api.github.com/repos/rly0nheart/orbis-unum/releases/latest"
     )
-
-    remote_version = release_data.get("tag_name")
-    if remote_version != __version__:
-        markdown_release_notes = Markdown(release_data.get("body"))
-        log.info(f"Orbis Unum {remote_version} is available.\n")
-        print(markdown_release_notes)
-    else:
-        pass
+    if release_data.get("tag_name"):
+        remote_version = release_data.get("tag_name")
+        if remote_version != __version__:
+            markdown_release_notes = Markdown(release_data.get("body"))
+            log.info(
+                f"Orbis Unum {remote_version} (from {__version__}) is available. "
+                f"To update, run [italic][green]pip install --upgrade orbis-unum[/][/]"
+            )
+            print(markdown_release_notes)
 
 
 def path_finder(directories: list) -> None:
@@ -111,8 +116,9 @@ def format_map_name(map_name: str) -> str:
 
 def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description=f"Orbis Unum" f" — by {__author__}" f" ({__about__})",
-        epilog="🌍 IP Geolocator & Coordinate Mapper 📍",
+        description=Markdown(__description__, style="argparse.text"),
+        epilog=Markdown(__epilog__, style="argparse.text"),
+        formatter_class=RichHelpFormatter,
     )
     parser.add_argument("-i", "--ip", help="ip address or file containing ip addresses")
     parser.add_argument(
@@ -121,7 +127,7 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-d",
         "--debug",
-        help="run orbis-cli in debug mode",
+        help="run orbis-cli in debug mode (also applies to orbis-web)",
         action="store_true",
     )
     parser.add_argument("-v", "--version", action="version", version=__version__)
