@@ -8,7 +8,7 @@ include = [
     { path = "orbis/templates/index.html" }
 ]
 name = "orbis-unum"
-version = "1.0.1"
+version = "1.1.0"
 description = "🌍 IP Geolocator & Coordinate Mapper 📍"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 readme = "README.md"
@@ -25,11 +25,13 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
+aiohttp = "*"
 rich = "*"
+rich-argparse = "*"
 jinja2 = "*"
 flask = "*"
 
 [tool.poetry.scripts]
 orbis = "orbis_unum.main:orbis"
-orbis-cli = "orbis_unum.main:cli"
-orbis-web = "orbis_unum.main:web"
+orbis-cli = "orbis_unum.main:orbis_cli"
+orbis-web = "orbis_unum.main:orbis_web"
