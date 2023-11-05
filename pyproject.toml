@@ -8,8 +8,8 @@ include = [
     { path = "orbis/templates/index.html" }
 ]
 name = "orbis-unum"
-version = "1.1.1"
-description = "🌍 IP Geolocator & Coordinate Mapper 📍"
+version = "1.2.0"
+description = "🌍 IP Geolocator & Coordinate Mapping tool 📍"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 readme = "README.md"
 license = "MIT License"
