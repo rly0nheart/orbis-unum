@@ -120,7 +120,7 @@ def create_parser() -> argparse.ArgumentParser:
         epilog=Markdown(__epilog__, style="argparse.text"),
         formatter_class=RichHelpFormatter,
     )
-    parser.add_argument("-i", "--ip", help="ip address or file containing ip addresses")
+    parser.add_argument("ip", help="ip address or file containing ip addresses")
     parser.add_argument(
         "-o", "--output", help="map output name (default %(default)s)", default="orbis"
     )
@@ -145,7 +145,7 @@ def set_loglevel(debug_mode: bool) -> logging.getLogger:
         level="NOTSET" if debug_mode else "INFO",
         format="%(message)s",
         handlers=[
-            RichHandler(markup=True, log_time_format="%H:%M:%S", show_level=True)
+            RichHandler(markup=True, log_time_format="%H:%M:%S", show_level=debug_mode)
         ],
     )
     return logging.getLogger("Orbis Unum")
