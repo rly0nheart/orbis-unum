@@ -4,6 +4,14 @@ from .coreutils import args, log, path_finder, check_updates, Markdown, print
 from .orbis import message, app, create_map, get_location_data_list
 
 
+print(
+    """
+┏┓  ┓ •   ┳┳       
+┃┃┏┓┣┓┓┏  ┃┃┏┓┓┏┏┳┓
+┗┛┛ ┗┛┗┛  ┗┛┛┗┗┻┛┗┗"""
+      )
+
+
 def orbis():
     print(
         Markdown(
@@ -64,5 +72,5 @@ def orbis_web():
     check_updates()
 
     # Start the Flask app
-    log.info("Hosting Flask app at http://localhost:5000/index")
+    log.info("Hosting Orbis Web at http://localhost:5000/index...")
     app.run(debug=args.debug)
