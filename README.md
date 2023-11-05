@@ -1,11 +1,12 @@
-![orbis](https://github.com/rly0nheart/orbis-unum/assets/74001397/5e338026-e15a-4a9e-ae8a-f154b03dc54f)
+![orbis-unum](https://github.com/rly0nheart/orbis-unum/assets/74001397/e26e1cc5-98bb-4bce-9e0a-0383ba16b4cd)
+
 
 **Orbis Unum** is a cross-platform geolocation tool that transforms raw *IP addresses* and *geographical coordinates* into interactive visualizations on a map. With its intuitive interface, users can effortlessly navigate whether they're operating from the command line or using its web-based instance.
 
 ![Python](https://img.shields.io/badge/Python-14354C?style=flat&logo=python) ![html](https://img.shields.io/badge/HTML-orange?style=flat&logo=html5&logoColor=white) ![flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask) [![Upload Python Package](https://github.com/rly0nheart/orbis-unum/actions/workflows/python-publish.yml/badge.svg)](https://github.com/rly0nheart/orbis-unum/actions/workflows/python-publish.yml) [![CodeQL](https://github.com/rly0nheart/orbis-unum/actions/workflows/codeql.yml/badge.svg)](https://github.com/rly0nheart/orbis-unum/actions/workflows/codeql.yml)
 
 ## 🔍 What Does Orbis Unum Offer?
-### Command Line Interface
+### Command-Line Interface
 - [x] Accepts either a standalone IP or a file loaded with multiple IP addresses.
 - [x] Generates an interactive OpenStreetMap with pinpoint accuracy for each IP's location.
 #### On selecting any pin, you uncover:
@@ -24,6 +25,16 @@
 **Orbis Unum** can be installed from PyPI with the following command
 ```
 pip install orbis-unum
+```
+
+# Usage
+## Orbis Command-Line Interface
+```
+orbis-cli <ip>
+```
+## Orbis Web Interface
+```
+orbis-web
 ```
 ***
 ![python-powered](https://github.com/rly0nheart/orbis-unum/assets/74001397/c2d2d150-d8e7-4748-bd97-0ca62685fa91)
