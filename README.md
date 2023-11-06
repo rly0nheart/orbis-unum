@@ -1,4 +1,4 @@
-![orbis-unum](https://github.com/rly0nheart/orbis-unum/assets/74001397/e26e1cc5-98bb-4bce-9e0a-0383ba16b4cd)
+![orbis-unum](https://github.com/rly0nheart/orbis-unum/assets/74001397/2465159d-fb32-49d2-8fec-8beb974f5a01)
 
 
 **Orbis Unum** is a cross-platform geolocation tool that transforms raw *IP addresses* and *geographical coordinates* into interactive visualizations on a map. With its intuitive interface, users can effortlessly navigate whether they're operating from the command line or using its web-based instance.
