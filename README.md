@@ -17,8 +17,8 @@
     * **Google Image Search** to view images of the location and its surroundings.
 
 ### Web Interface
-* Accepts individual or bulk pairs of coordinates.
-* irrors the CLI's functionality, providing an immersive mapping experience.
+* **Accepts individual or bulk pairs of coordinates.**
+* **Mirrors the CLI's functionality, providing an immersive mapping experience.**
 
 # Installation
 **Orbis Unum** can be installed from PyPI with the following command
